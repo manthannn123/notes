@@ -1,0 +1,11 @@
+RHEL 6 = kernel 2.6.32
+RHEL 7 = kernel 3.10.0
+RHEL 8 = kernel 4.18.0
+RHEL 9 = kernel 5.14.0
+RHEL 10 = kernel 6.12.0
+
+LINUX FILE SYSTEM
+
+Linux files are organized logically for ease of administration. This file organization is maintained in hundreds of directories located in larger container called file system . Red hat enterprise linux follows the file system hierarchy standard for file organization which describes names locations and permission for many file types and directories
+
+Linux file systems contain files and subdirectories . A subdirectory also referred to as child directory is located under a parent directory the parent directory is a subdirectory of a higher-level directory the linux directory structure is analogous to an inverted tree where the top of the tree is the root of the directory tree branches are subdirectories and leaves are files the root of the directory is represented by the forward slash character (/) and this is where the entire directory structure is ultimately connected the forward slash is also used as directory structure in a path such as /etc/shadow
