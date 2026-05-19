@@ -9,3 +9,65 @@ LINUX FILE SYSTEM
 Linux files are organized logically for ease of administration. This file organization is maintained in hundreds of directories located in larger container called file system . Red hat enterprise linux follows the file system hierarchy standard for file organization which describes names locations and permission for many file types and directories
 
 Linux file systems contain files and subdirectories . A subdirectory also referred to as child directory is located under a parent directory the parent directory is a subdirectory of a higher-level directory the linux directory structure is analogous to an inverted tree where the top of the tree is the root of the directory tree branches are subdirectories and leaves are files the root of the directory is represented by the forward slash character (/) and this is where the entire directory structure is ultimately connected the forward slash is also used as directory structure in a path such as /etc/shadow
+
+
+THE ROOT FILE SYSTEM (/) , DISK-BASED
+
+The root directory is the tip-level file system in the FHS and contains many higher-level directories that store specific information. some of the key directory are :
+
+/etc . The etcetera ( or extended text configuration ) directory holds system configuraion files. Some common subdirectories are systemd , sysconfig, lvm and skel which conprise configuration files for systemd most system services the Logical volums manager and per-user shell startup template file respectively 
+
+/root : This is the default home directory location for the root user
+/mnt : This directory is used to mount a file system temporarily
+
+THE BOOT FILE SYSTEM (/boot) , DISK-BASED	
+
+The boot file system contains the linux kernel , boot support files and boot configuration files just like root file system the size of the file system is also automatically determined by the installer program based on the available disk space when you select the default partitioning however it may be set to different size during or after installation if required 
+
+THE HOME DIRECTORY (/home)
+
+The /home directory is designed to store user home directories and other user contents .Each user is assigned a home directory to save personal files and the user can block access to other users
+
+THE OPTIONAL DIRECTORY (/opt)
+
+THis directory can be used to used to hold additional software that may need to be installed on the system. A subdirectory is careated for each installed software.
+
+THe UNIX SYSTEM RESOURCE DIRECTORY (/usr)
+
+this directory contains most of the system files some of the important subdirector are
+
+/usr/bin : This binary directory contains crucial user exexutable commands 
+/usr/sbin : Most of the commands in this directory needs root privleg
+/usr/lib and /usr/lib64 : Are the library directory conatain shared library routines required by many commands and programs located in the /usr/bin and /usr/sbin directory
+/usr/include: This directory conatains header files for C language
+/usr/local : this directory serves as system administrator repository for storing commands and tools downloaded from the web developed-in-house or obtained elsewhere . These commands and tools are not generally included with the original linux distribution In particular /usr/local/bin holds executables /usr/local/etc holds configuration files and /usr/local/lib and /usr/local/lib64 holds libarary routines
+/usr/share : This is the directory location for manual pages
+/usr/src : This directory is used to store source code
+
+THE VARIABLE DIRECTORY (/var)
+
+The /var directory contains data that freqently changes while the system is operational such as logs,status,spool,lock,and other dynamic data some of the subdirectories are 
+/var/log : this is the storage for most system logs 
+/var/opt : this directory stores logs ,  status and other variable data files for additional software installed in /opt
+/var/spool : directories that hold print jobs cron jobs mail messages and other queued items
+/var/tmp : Large temporary files or temporary files that need to exit for longer periods of time than twhat is typically allowed in another temporary directory /tmp are stored here
+
+THE TEMPORARY DIRECTORY(/TMP)
+This directory is a repository for temporary files . many programs create temporary files here during runtime or installation . These files survive system reboots and are automatically removed if they are not accessed or modified for a period of 10 days
+
+THE DEVICES FILES SYSTEM (/dev) virtual
+
+The devices (dev file system) files system is accessible via the /dev directory and it is used to store devices nodes for physical hardware and virtual devices the linux kernel communicates with these devies through corresponding device located here 
+
+THE PROCFS FILE SYSTEM (/PROC) virtual 
+
+the procfs (process file system) file system is accessible via the /proc directory and it is used to maintain information about the current state of the running kernel this includes the details for current hardware configuration and status information of cpu , memory ,disks , partitioning file system , networking, running processes and so on 
+
+THE RUNTIME FILE SYSTEM (/run) virtual
+This virtual file system is a repository of data for processes running on the system one of its subdirectories /run/media is also used to automatically mount external file systems such as those that on optical (CD and DVD) and flash USB 
+The contents of this file system are automatically deleted at system shutdown
+
+THE SYSTEM FILE SYSTEM (/sys) virtual
+
+Information about hardaware device driver and some kernel features is stored and maintained in the /sys file system this information is used by the kernel to load necessary dupport for the devices create device nodes in /dev/ configuate the devices the file system is auto-maintained as well
+
