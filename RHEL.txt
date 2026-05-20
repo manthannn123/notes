@@ -71,3 +71,61 @@ THE SYSTEM FILE SYSTEM (/sys) virtual
 
 Information about hardaware device driver and some kernel features is stored and maintained in the /sys file system this information is used by the kernel to load necessary dupport for the devices create device nodes in /dev/ configuate the devices the file system is auto-maintained as well
 
+
+				Listing Files and Directories 
+
+One of the basic commands in linux is the ls (list) command. it is used ot show the list of files and directories . This command supports a multiple options , some such as 
+
+-a = includes hidden files and directories in the output
+-l = Displays long listing with detailed file information including file type permission lin	 k count owner
+-ld = Displays long listing of the specified directory but hides its contents
+-lh = Displays long listing with the file size shown in hyman-friendly format
+-lt = list all files sorted by date and time with the newest file first 
+-ltr = lists all files sorted by date and time with the oldest file first (reverse)
+-R = lists contents of the specified directory and all its subdirectories (recursive listing)
+
+				Viewing Directory Hierarchy
+
+The tree command lists a hierarchy of directories and files. There are a number of options with this commands that can be specified to include addtional information
+
+-a = Includes hidden files in the output
+-d  = Excludes files from the output
+-h = Displays file size in human-friendly format
+-f = prints the full path for each file
+-p = includes file permissions in the output
+
+
+				Identifying terminal Device file
+
+Linux allocates unique pseudo ( or virtual) numbered device files to represent terminal sessions opened by users on the system. It uses these files to communicate with individual sessions By default these files are stored in the /dev/pts ( pseudo terminal session) directory These files are created by the system when a user opens a new terminal session and they are removeed on its closure. The destroyed files are recreated and reused for new terminal sessions
+
+				Inspecting System's Uptime and Processor Load
+
+The uptime is used to display the system's current time , length of time it has been up for , number of users currently logged in, and the average cpu (processing) load over the past 1,5,15 min
+
+				Clearing the Screen
+
+The clear command clears the terminal screen and places the cursor at the top left of the screen. This command is useful to clear the screen of any distractive content and run new commands on a clean slate 
+
+				Determining Command Path
+
+Rhel provides a set of tools that can be used to identify the absolute path of the command that will be executed when you run it without specifying its full path. These tools are which,whereis,type commands 
+
+
+				Viewing System Information
+
+There are several elements in the RHEL system that identify various information regarding the operating system hardware kernel storage networking and so on the uname command identifies elementary information about the system including its hostname without any options the output of this command is restricted to displaying the operating system name only however it reports other details by adding the -a options 
+
+-s = kernel name , -n (node name) , -r = kernel release , -v = kernel build date , -m = hardware name , -p = processor type , -i = hardware platform , -o = OS name
+
+
+				View CPU Specs
+
+A CPU has many arcitectural pieces that can be looked at using the lscpu command. These include the CPU architecture, its operating modes, vendor,family,model,speed,cache memory, and whether it supports virtualization. 
+
+
+				Seeking Help
+
+While working on the system you may require help to obtain information about a command or a configuration file. RHEL offers online help via manual pages . Manual pages are online documentation that provides details on commands configuration files etc They are under the /usr/share/man directory when associated software packages are installed 
+
+In additonal to the manual pages apropos and whatis commands as well as documentation location /usr/share/doc directory are also available on the system 
