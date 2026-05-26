@@ -128,4 +128,116 @@ A CPU has many arcitectural pieces that can be looked at using the lscpu command
 
 While working on the system you may require help to obtain information about a command or a configuration file. RHEL offers online help via manual pages . Manual pages are online documentation that provides details on commands configuration files etc They are under the /usr/share/man directory when associated software packages are installed 
 
-In additonal to the manual pages apropos and whatis commands as well as documentation location /usr/share/doc directory are also available on the system 
+In additonal to the manual pages apropos and whatis commands as well as documentation location /usr/share/doc directory are also available on the system
+
+
+				Accessing Manual Pages
+
+Use the man command to view manyal pages ,  The output returns the name of the command , the section of the manual pages it is documented is within the parentheses and the type of the command on line one 
+
+Enter/Down arrow = moves forward one line 
+up arrow = moves backward one line 
+f / space / page down = moves forward one page
+b / page up = moves backward one page
+d / u = moves down / up half a page
+g / G = moves to the beginning / end of the man pages
+:f = Displays the line number and byte bbeing viewd
+q = Quite the man pages
+/pattern = Searches forward for the specified pattern
+?pattern = searches backward for the specified pattern
+n/N = finds the next / previous occurrence of a pattern
+h = Gives help on navigational key 
+
+
+				Sections of Manual Documents
+
+section 1  = user commands the commands like ls , cp , grep all the user regardless of previlege can use 
+section 2 = system call all the kernel functions called by programs are stored like fork() and open()
+section 3 = library functions all the C standard library functions - printf () , malloc()
+section 4 = special files The device files in /dev - null , tty , sda
+section 5 = file formats all the config and data file formats like /etc/passwd , /etc/fstab
+section 6 = games and screensavers are stored 
+section 7 = miscellaneous conventions , protocols , standards - ascii , regex
+section 8 = admin commands system administration commands - mount , fsck , fdisk
+section 9 =  kernel routines like internal kernel functions ( rarely used)
+
+				Searching by Keyword
+
+Linux allows to perform a keyword search on manual pages using the main command with the -k flag or the apropos command. THses command search all the sections of the manual pagws and shows a list of all entries matching the specified keyword in the name or descriptions.
+
+But before permforming keyword search on a new installed linux youll need to run (mandb) command in order to build an indexed database of the manual pages 
+
+some comands also support the use of the --help and -? parameters. These parameters provide a brief list of options and description without going through the manual pages
+
+
+				Exposing Short Description
+
+The whatis command searches for a short description of the specified command or file in the manual database. It quickly scans through the installed manual pages for the specified string and displays all the matching entries 
+
+The man -f command and whatis command procduces the same output 
+
+				Documentation in ht /usr/share/doc Directory
+
+the /usr/share/doc directory stores general documentation for installed packages under subdirectories that match their name
+
+
+			Red Hat Enterprise Linux 9 Documentation
+
+The website at docs.redhat.com hosts documentation for Red Hat's vatious products including RHEL 9 in HTML , PDF , EPUB formats
+
+
+				Common File Types
+
+1) regular
+2) directory
+3) block special devices
+4) character special devices
+5) symbolic link 
+6) named pipe
+7) socket
+
+
+the commands like file and stat are used to get the detail of the files 
+
+
+				Compression and Archiving
+
+
+compression tools are used to compress one or more files to conserve space. They mawy be used with archive commands such as tar or star to create a single compresed archive of hundred of files and directories 
+
+
+				Using gzip and gunzip
+
+The gzip/gunzip compression utility pair has been available in linux for over two decades. the gzip command is used to create a compressed file of each of the specified file and it adds the .gz extension to each file for identification. This tool can be used with the -r option to compress an entire dirctory tree and with the -l option to display compression information about a gzipped file
+
+And to decompress this file we can use gunzip command
+
+				Using bzip2 and bunzip2
+
+The bzip2/bunzip2 is another compression pair has been available in linux for a long time. The bzip2 command creates a compressed file of each of the specified files and it adds the .bz2 extension to each file for identification 
+
+To decompress this file we can use bunzip2 
+
+				Differences between gzip and bzip2 
+
+The functions of both gzip and bzip2 is the same to compress and decompress files However in terms of the compression and decompression rate bzip2 has a better compression ratio but it is slower. There difference are evident on fairly large files. on small files yoy can use either of the two. Both commands support several identical optins
+
+				Using tar
+
+The tar (tape archive) command is used to create , append , update , list , and extract files or an entire directory tree to an from single file which is called tarball or tarfile . This command can be instructed to also compress the tarball after it has been created 
+
+
+tar support a multitude of optins such as ,
+-c = create a tarball
+-f = specifies a tarball name
+-p = preserve file permission 
+-r = appends files to end of an extant uncompressed tarball
+-t = list content of a tarball
+-u = appends files to the end of a extant uncompressed tarball
+-v = verbose mode
+-x = extract or restores from tarball
+
+tar also support options to directly compress the target file while being arechived using the gzip or bzip2 command 
+
+-j = compresses a tarball with bzip2
+-z = compressed a tarball with gzip
