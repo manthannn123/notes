@@ -241,3 +241,96 @@ tar also support options to directly compress the target file while being arechi
 
 -j = compresses a tarball with bzip2
 -z = compressed a tarball with gzip
+
+					
+					File Editing
+
+The vim is an interactive full-screen visual text-editing tool that allows you to create and modify text files. This tool is available as a standard editor in all UNIX versions and Linux distributions . It does not require the graphical capability and it is not heavy on compute resources. All text editing within vim takes place in buffer . Change can be written to the disk or discarded 
+
+their are three mode in vim 
+1) command mode = here we can use commands to copy , append , delete, replace and so on 
+2) input mode = here no command can be used and only editing can be done
+3) inline mode = this is also called advace command mode no editing can be done here
+
+vim starts with command mode , we need to press i for input mode and : to reach inline mode and esc to go back to command mode 
+
+
+h =  move backwared one character
+j = move downward oneline
+k = moves upward one ine
+l = moves forward one character
+w = moves to start of the next word
+b = moves backward to the start of the preceding word
+e = moves to the ending character of the next word
+$ = moves to the end of the current line
+enter = moves to the beginning of the next line
+ctrl+f = scrolls down to the next page
+ctrl+b = scrolls up to the previous page
+:set nu = shows line numbering
+:set non = hides line numbering
+
+Deleting Text
+
+x = Deletes the character at the cursor postion
+X = Deletes the character before the cursor location
+dw = Deletes the word or part of the word to the right of the cursor location
+dd = Deletes the current line
+D = Deletes at the cursor position to the end of the current line
+:6,12d = Deletes line 6 through 12
+
+Undoing and Repeating
+u = undoes the previous command
+U = Undoes all the changes done on the current line
+:u = undoes the previous last line mode command
+.(dot) = Repeates the last command run
+
+				Searching for Text
+
+/string = Searches forward for a string
+?string = searches backward for a string
+n = finds the next occurrence of a string
+N = fines the previous occurrence of a string
+
+
+				Replacing Text
+
+:%s/old/new = Replaces the firt occurrence of old with new in a file 
+:%s/old/new/g = Replaces all occurrence of old with new in a file
+
+				Copying, Moving , Pasting Text
+
+
+vim allows to copy some text and paste it to the desired location within the file . we can copy (yank) a single character a single word or an entire line and then paste it wherever we need it. The copy function can be performed on multiple characters words or lines 
+
+yl = yanks the current letter into buffer
+yw = yanks the current word into buffer
+yy = yanks the current line into buffer
+p = pasts yanked data below the current line
+P = pastes yanked data above the current line
+:1,3co6 = copies line 1 through 3 and paste them after line 6
+:4,6m9 = moves line 4 through 6 after lline 9
+
+				Change Text
+
+There are numerous commands available within vim to change and modify text as summarized below
+
+cl = change the letter at the curor location
+cw = changes the word at the cursor location to the ned of the word
+cc = changes the entire line
+C = changes the text at the cursor positon to the end of the line
+r = replaces the character at the cursor location with the character entered following this command
+R =  overwrites or replaces the text on the current line
+J = joins the next line with the current line
+xp = switches the position of the character at the cursor position with the character to the right of it 
+
+				Saving and quitting vim 
+
+when we are done with modification we can save or discard them 
+
+:w = writes changes into the file withoug quitting vim
+:w files2 =  write changes into a new file called file2 without quitting vim
+:w! = writes changes to the file even if the file ower does not have write permission on the file
+:wq = writes changes to the file and quits vim
+:wq! = writes changes to the file and quits vim even if the file ower doesnt not have write permission on the file
+:q = qiuits vim if no modification were made
+:q! = quits vim if modifications were made, but we do not wish to save them 
