@@ -1,0 +1,97 @@
+				Bash and Bash Scripting
+
+
+shell types
+
+1) sh or bourne shell
+2) bash ( bourne again shell)
+3)csh (c shell)
+4) tcsh (TENEX c shell)
+5) ksh (korn shell) 
+
+The file /etc/shells gives an overview of known shells on linux system
+
+your defualt shell is set in the /etc/passws file 
+
+To switch from one shell to another just enter the name of the new shell in the active terminal 
+
+
+
+
+
+					Writing and Debugging script
+
+A shell is a sequence of commands for which you have a repeated use. This sequence is typically executed by entering the name of the script on the command line. Alternatively we can use scripts to automate tasks using the cron facility 
+
+
+To create a shell script open a new empty file in yout editory . any text editor will do :vim emacs gedit dtpad et cetera are all valid 
+
+syntax highlighting in vim 
+
+in order rto activate syntax highlighting in vim use the command 
+:syntax enable or :sy enable or :syn enable
+
+you can add this setting to your .vimrc file to make it permanent
+
+Give your script a sensible name that gives a hint about what the script does make sure that your script name does not confilct wit existing commands in order to ensure that no confusion can rise script names often end in .sh even so there might be other scripts on your system with the same name as the one you chose check using whereis and which and otehr commands for finiding information about program and files 
+
+which -a script_name
+whereis script_name
+locate script_name
+
+
+Executing the script 
+
+The script should have execute permissions for the correct owners in order to be runnable when permissions check that you really obtained the permission that you want when this is done the script can run like any other command
+
+chmod u+x script.sh
+
+script.sh
+
+this is the most common way to eecute a script it is preferred to execute the script like this in a subshell. the variable functions and aliases created in this subshell are only known to the particular bash session of that subshell when that shell exits and the parent regains control everyting is cleaned up and all changes to the state of the shell made by the script are forgotten 
+
+If the cscripts directory is not in the path and . (the current directory) is not the PATH either yoy can activate the script like this 
+
+./scripth.sh
+
+A script can also explicitly be executed by a given shell but generally we only do this if we want to obtain special behavior such as checking if the script works with another shell or printing traces for debugging 
+
+rbash script.sh
+sh script.sh
+bash -x script.sh
+
+The specified shell will start as subshell of your current shell and execute the script. this is done when you want the script to start up with specific option or under specific conditions which are not specified in the script
+
+
+Which shell will the script work
+
+When running a script in a subshell you should define which shell should run the script the shell type in which you wrote the script might not be the default on your system so command yoy entered might result to errors when executed by wrong shell
+
+The first line of the script deternines the shell to start the first two characters of the firest line should be #! then follows the path to the shell that should interpret the command that follow.Blank lines are also considered to be line so dont start your script with an empty line
+
+#!/bin/bash
+
+Comments 
+
+in bash we represent comments with # comments can be written above or below the script and at the end of any command
+
+
+# this line in script will be considered as comment which will not affect the code and wont be displayed in output but will be their in source code
+
+					Debugging Bash Script 
+
+When things dont go according to plan you need to determine what exactly causes the script to fail bash provides extensive features the most common is to start up the subshell with the -x option which will run the entire script in debug mode Traces of each command plus its arguments are printed to standard output after the commands have been expanded but before they are executed 
+
+
+bash -x script.sh
+
+Debugging on parts of the script 
+
+using the set Basg built-in you can run in normal mode those portions of the script of which you are sure they are without fault and display debugging information only for troublesome ones say we are not sure what the w command will do in the example then we could enclose it in the script 
+
+set -x
+w
+set +x
+
+
+				The Bash Environment (37)
