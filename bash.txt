@@ -179,4 +179,67 @@ $_ 	  The underscore variable is set at shell startup and contains the absolute 
 	  checking mail, this parameter holds the name of the mail file
 
 
+					Script  recycling with variables
 
+Apart from making the script more readable variables will also enable you to faster apply a script in another environment or for another purpose
+
+First of all more likely to make errors if we name filews and directories manually each timeas they are required secondly if franky wants to give a script to carol then carol will have to quite some editing before she can use the script to back up her home directory. the same is true if franky wants to use this script for backing up other dirctories for easy recycling makes all files directories usernames servernames eltcetera variable. thus you can only need to edit a value once withour having to go through the entire script to check where a parameter occurs
+
+					Quoting characters
+
+A lot of keys have special meanings in some context or other quoting is used to remove the special meaning of characteres or words quotes can disable special treatment for special characters they can prevent reserved words from being recongnized as such and they can disable parameter expansion 
+
+
+					Escape characters
+
+Escape characters are used to remove the special meaning from a single character. A non-quoted baskslash , \ , is used as an escape character in Bash. It preserves the literal value of the next character that follows with the exception of newline. If a newline character apperars immediately the backslash it marks the continuation of a line when it is longer that the width of terminal  the backslash is removed from the input stream and effectively ignored 
+
+example : date = 20260702
+	  echo $date 
+	  20260702
+	  echo \$date
+	  $date
+
+
+Single quotes
+
+single quotes ('') are used to preserve the literal value of each character enclosed within the quotes . A dingle quote may not occur between single quotes, even when preceded by a backslash
+
+echo 'date'
+
+Double quotes
+
+using double quotes the literal value of all characters enclosed is preserved, except for the dollar sign the backticks (backward single quotes, ``) and the backslash
+
+The dollar sign and tghe backticks retain their special meaning within double quotes
+
+				ANSI-C quoting
+
+words in the form "$'STRING'" are treated in special way. the wordexpands to a string with baskslash-escaped characters replaced as specified by the ANSI-C standard. Backslash escape sequances can be found in the Bash documentataion 
+
+				Locales
+
+A double-quoted string precedded by a dollar sign will cause the string to be translated according to the current locale. If the current locale is "C" or "POSIX" the dollar sign is ignored if the string is translated and replaced the replacement is double-quote
+
+ 				Refular expression
+
+A regular expression is a pattern that describes a set of strings. Regulare expressions are constructed analogously to arithmetic expressions by using various operators to combine smaller expressions
+
+operator	effect
+.		Matches any single character
+?		The preceding item is optional and will be matched at most once
+*		The preceding item will be matched zero or more times
+- 		represents the range if its not first or last in a list or the ending point
+of a range in a list
+^		matches the empty string at the beginning of a line also represents the characteres not in the range of list
+$		Matches the empty string at the end of a line
+\<		Matches the empty string at the beginning of word
+\> 		Match the empty string at the end of word
+
+				Basic versus extended regular expressions
+
+In basic regular expressions the metacharacters "?","+","{","|","(",and ")" lose their special meaning instead use the backlashed versions "\?","\+","\{","\|",and "\}".
+
+					grep
+
+grep searches the input files for lines containing a match to a given list when it finds a match in a line it copies the line to standard output (by default) or whatever other sort output have requersted with option
