@@ -243,3 +243,102 @@ In basic regular expressions the metacharacters "?","+","{","|","(",and ")" lose
 					grep
 
 grep searches the input files for lines containing a match to a given list when it finds a match in a line it copies the line to standard output (by default) or whatever other sort output have requersted with option
+
+
+					Character classes
+
+A baradcket expression is a list of characters enclosed by "[" and "]" it matches any single character in that list if the first character of the list is the caret "^" then it matches any character Not in list i
+
+
+					wildcards
+
+use the '." for a single character match . if you want to giet a list of all five character english dictionary words starting with "c" and ending with "h"? 
+
+ex : grep '\<c..h\>' /usr/share/dict/words
+
+if you want to fine literal * in the file or output we can use single quote ('') 
+ex : greap '*' /etc/profile
+
+					pattern matchng using Bash features
+
+character ranges
+
+Apart from grep and regular expression theres a good deal of pattern matching that you can directly in the shell without having to use external program 
+
+the asterisk (*) and the question mark  (?)  match any string or any single character respectively. Quotes these special characters to match them literally 
+
+we can also use square braces to match any enclosed character or range of characters if parirs of characters are separated by hyphen 
+
+ex : ls -ld [a-cx-z]*
+
+if the first character withing the braces is "!" or "^" any character not enclosed will be macthed . To match the dash ("-") include as the first as the first or last character is the set. The sorting depends on the current locales and of the value of the LC_COLLATE variable if it is set . mind that other locales might interpret "[a-cx-z]" as "[aBbCcXxYyZz']" if sorting is done in dictionary order if you want to be sure have traditional interpretration of range force this behaviour by setting LC_COLLATE or LC_ALL to "C"
+
+
+						SED
+
+A Stream EDitior is used to perform basic transformation on text read from a file or a pipe.The result is sent to standard output . The syntax for sed command has no output file specification but result can be saved to a file using output redirection the editor does not modify the original input
+
+What distinguishes sed from other editors such as im and ed is its ability to filter text that it getsfrom a pipeline feed you do not need to interact with the editor while it is running that is why sed is sometimes called a batch editor. This feature allows use of editing commands in scripts greatly easing repetitive editing tasks. when facing replacement of text in large number of files sed is gret help
+
+
+sed commands 
+
+The sed program can perform text pattern substitution and deletions using regular expression like the onces used with the grep commands 
+
+command		result
+
+a\ 		append test below current line
+
+c\		change text in the current line with new text
+
+d		Delete text
+
+i\ 		Insert text above current line
+
+p		print text
+
+r 		read a file
+
+s		Search and replace text
+
+w		Write to a file
+
+
+Printing lines containing a pattern
+
+This is something we can do with grep too but grep is just used to copy the result in ouput and we cant use find and replace using grep 
+
+if we want to find all the lines containing out search pattern in this case "errors" .  we use the p to obtain the result 
+
+ex: sed '/erors/p' example
+
+in this example sed prints the entire file bu the line containing the search string are printed twice This is not what we want , in order to print those line matching pattern we can use -n pattern
+
+sed -n '/errors/p' example
+
+Deleting lines of input containing a pattern
+
+we cab also delete the pattern useing sed 
+
+ex : sed '/errors/d' example
+
+The d command results in excluding line from being displayed 
+
+matching lines starting with a given pattern and ending in a second pattern are showed like 
+
+sed -n '/^this.*errors.$/p' example
+
+
+
+Range of lines
+
+this time we want to take out the lines containing gthe errors . in the example these are line 2 to 4 sepcify this range to address together with the d command 
+
+ex : sed '2,4d' example
+
+to print the file starting from a cerain line until the end of the file use a command like 
+
+ex : sed '3,$d' example
+
+
+(73)
