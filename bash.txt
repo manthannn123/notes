@@ -340,5 +340,50 @@ to print the file starting from a cerain line until the end of the file use a co
 
 ex : sed '3,$d' example
 
+Find and replace with sed
 
-(73)
+we can use sed to search and replace the errors instead of only (de)selecting the line contiainging the search string
+
+sed /s/erors/errors/' example
+
+this method is used to replace the first occurance in the line to change all the occurance in the line we can use g command to indicate to sed that it should examine the entire line instead of stopping at the first occur
+
+sed '/s/erors/errors/g' example
+
+to insert a string at the beginning of each line of a file 
+
+sed 's/^/>' example
+
+insert some string at the end of each line
+
+sed 's/$/EOL/' example
+
+multiple find and replace commands are seprated with individual -e option
+
+sed -e 's/erors/errors/g' -e 's/last/final/g' example
+
+
+
+
+					awk (gawk)
+
+The basic function of awk is to search files for lines or other text units containing one or more pattern. when a line matches one of the patterns, special actions are performed on the line.
+
+programs in awk are different from programs in most other languages because awk programs are "data-driven" you describe the data you want to work with and then what to do when you find it . most other language are "procedural." you have to describe in great detail every step the program is to take when working with procedural languages it is usually much harder to clearly describe the data your program will process . for this reason awk program are often refreshingly easy to read and write 
+
+
+When we run awk we specify an awk program that tells awk what to do . the program consist of series of rules . each rules specifies one pattern to search for and  one action to performupon finding the pattern
+
+The print command and regular expressions
+A regular expression can be used as a pattern by enclosing it in slashes. The regular expression is then tested against the entire text of each record the syntax is as follows
+
+awk 'EXPRESSION' {PROGRAM}' file(s)
+
+df -h | aws '/dev\/hd/' {print $6 "\t:" $5}'
+
+slashes need to escaped because they have special meaning to the awk program 
+
+in awk /< is used to match the start of the line and $/ is used to match the end of the line
+
+
+					Conditional statement 
