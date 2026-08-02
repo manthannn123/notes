@@ -386,4 +386,73 @@ slashes need to escaped because they have special meaning to the awk program
 in awk /< is used to match the start of the line and $/ is used to match the end of the line
 
 
-					Conditional statement 
+					Conditional statement
+
+
+conditional statement are needed to specify different courses of acton to be taken in a shell script. depending on the sucess or failure of a command .  The if construction allows to sepcify such conditions
+
+the most compact syntax of the if command is 
+
+if TEST-COMMANDS; then CONSEQUENT-COMMAND; fi
+
+The TEST-COMMAND list is executed and if it return status is zero the CONSEQUENT-COMMANDS list executed. The return status is the exit status of the last command executed or zero if no condition tested true
+
+The consequent-command list that follows the then statment can be any valid unix command any executable program any executable shell script or any shell statement with the exception of the closing fi. it is important to remember that the then and fi are considered to be separated statements in the shell therefore when issued on the command line they are seperated by a semi-colon
+
+
+
+
+					Expressions used with if
+
+primary			meaning
+
+[-a FILE]		True if FILE exists
+
+[-b FILE]		True if FILE exists and is a block-special file
+
+[-c FILE]	 	True if FILE exists and is a characters-special file
+
+[-e FILE]		True if FILE exists
+
+[-d FILE]		True if FILE exists and is a directory
+
+[-f FILE]		True  if FILE exists and is a regular file
+
+
+Commands following the then statement
+
+The CONSEQUENT-COMMANDS list that follows the then statement can be any valid UNIX command any executable program any executable shell script or any shell statement with the exception of the closing fi.
+
+example 
+if [-f /var/log/messages]
+	then
+	  echo "/var/log/messages exists."
+fi
+
+
+				if/then/else
+
+this is the construct to use to take one course of action if the if commands test true and another if it test fase 
+
+					[] VS [[]]
+
+contrary to [ , [[ prevents word splitting of variable values so if var="var with spaces" you do not need to double quote $var in a test - eventhough using quotes remains a good habit [[ prevents pathname expansion so literal string with wildcards so not try to expand to filenames using [[, == and != interptet strings to the right as shell glob patterns to be matched against the value to the left for instance [[ "value" == val* ]].
+
+
+					if/then/elif/else 
+
+this id the full form of the if statement
+
+if TEST-COMMANDS;then
+CONSQUENT-COMMANDS;	
+elif MORE-TEST-COMMANDS;then
+MORE-CONSQUENT-COMMANDS;
+else ALTERNATE-CONSQUENT-COMMANDS;
+fi
+
+					Nested if statement
+
+Inside the if statement you can use another if statement you may use as many levels of nested ifs as you logiaclly manage 
+
+
+
