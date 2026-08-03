@@ -455,4 +455,39 @@ fi
 Inside the if statement you can use another if statement you may use as many levels of nested ifs as you logiaclly manage 
 
 
+					Boolean operation
+
+boolean operation in bash are used to combine or evaluate conditions using operations like AND(&&), OR (||) , NOT(!)
+
+
+				Using the exit statemetn and if 
+
+exit is used to terminate execution of the entire script , it most often used of the input requested from the user is incorrect if a statement did not run sucessfully or if some other error occurred
+
+The exit statement takes an optinal argument this argument is the integer exit status code which passed back to the partent and stored in the $? variable 
+
+					CASE Statement
+
+Nested if statement might be nice but as soon as you are confronted with a couple of different possible action to take they tend to confuse for the more complex conditionals use the case syntax
+
+case EXPRESSION in CASE1) COMMAND-LIST;;CASE2)COMMAND-LIST;;...CASEN)COMMAND-LIST;;ESAC
+
+
+
+
+				Using the echo built-in command
+
+
+the echo built-in outputs its argument separated by spaces and terminated with a newline character the return status is always zero echo takes couple of options 
+
+-e : interprets backslash-escaped characters
+-m : supressed the trailing newline 
+
+				catching user input
+
+
+The read built-in command is the conterpart of the echo and printf commands the syntax of the read command is follows
+
+read [option] NAME1 NAME2 ... NAMEN
+
 
